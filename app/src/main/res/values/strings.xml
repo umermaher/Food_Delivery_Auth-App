@@ -2,4 +2,8 @@
     <string name="app_name">Meal Monkey</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="facebook_app_id">4819503781482666</string>
+    <string name="fb_login_protocol_scheme">fb4819503781482666</string>
+    <string name="facebook_client_token">203a189ebb8f1a9c29b8fbe052d6dce2</string>
 </resources>

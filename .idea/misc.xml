@@ -12,10 +12,11 @@
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_main.xml" value="0.15" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_start.xml" value="0.20018115942028986" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_forgot_password.xml" value="0.21195652173913043" />
-        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_login.xml" value="0.13" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_login.xml" value="0.18" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_otp.xml" value="0.20018115942028986" />
-        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_sign_up.xml" value="0.15" />
       </map>
     </option>
   </component>

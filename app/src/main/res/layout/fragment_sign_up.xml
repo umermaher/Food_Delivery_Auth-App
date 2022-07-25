@@ -92,7 +92,7 @@
                     android:layout_weight="3"
                     android:id="@+id/phoneEditText"
                     android:textSize="14sp"
-                    android:paddingStart="30sp"
+                    android:paddingStart="10sp"
                     />
             </LinearLayout>
 
