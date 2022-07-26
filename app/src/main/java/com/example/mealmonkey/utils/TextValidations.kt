@@ -50,4 +50,16 @@ object TextValidations {
             true
         }
     }
+
+    fun validatePhoneNo(phoneNoText:EditText): Boolean {
+        val value: String = phoneNoText.text.toString()
+        return if (value.isEmpty()) {
+            phoneNoText.error = "Fields cannot be empty"
+            false
+        } else {
+            phoneNoText.error = null
+//            phoneNoText.setErrorEnabled(false)
+            true
+        }
+    }
 }

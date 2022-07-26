@@ -1,6 +1,7 @@
 package com.example.mealmonkey
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class MealMonkeyApplication:Application() {
-}
+@HiltAndroidApp
+class MealMonkeyApplication:Application()

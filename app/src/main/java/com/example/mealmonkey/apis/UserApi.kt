@@ -1,6 +1,7 @@
 package com.example.mealmonkey.apis
 
 import com.example.mealmonkey.models.RegisterUserResponse
+import com.example.mealmonkey.utils.Constants.Companion.DOES_USER_EXIST
 import com.example.mealmonkey.utils.Constants.Companion.REG_USER_SITE_URL
 import retrofit2.Response
 import retrofit2.http.Field
@@ -18,5 +19,11 @@ interface UserApi {
         @Field("phoneno")phoneNo:String,
         @Field("address")address:String,
         @Field("password")password:String,
+    ):Response<RegisterUserResponse>
+
+    @FormUrlEncoded
+    @POST(DOES_USER_EXIST)
+    suspend fun isUserExist(
+        @Field("email")email: String
     ):Response<RegisterUserResponse>
 }

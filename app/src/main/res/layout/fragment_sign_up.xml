@@ -90,6 +90,8 @@
                     android:background="@drawable/edit_text_bg"
                     android:hint="Mobile No e.g.331..."
                     android:layout_weight="3"
+                    android:maxLength="11"
+                    android:inputType="number"
                     android:id="@+id/phoneEditText"
                     android:textSize="14sp"
                     android:paddingStart="10sp"
@@ -113,6 +115,7 @@
                 android:background="@drawable/edit_text_bg"
                 android:hint="Password"
                 android:textSize="14sp"
+                android:maxLength="15"
                 android:inputType="textPassword"
                 android:id="@+id/passwordEditText"
                 android:paddingStart="30sp"
@@ -124,6 +127,7 @@
                 android:background="@drawable/edit_text_bg"
                 android:hint="Confirm Password"
                 android:textSize="14sp"
+                android:maxLength="15"
                 android:inputType="textPassword"
                 android:id="@+id/confirmPasswordEditText"
                 android:paddingStart="30sp"
@@ -169,5 +173,17 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/signUpPb"
+        style="@style/SpinKitView.Large.WanderingCubes"
+        android:layout_width="55sp"
+        android:layout_height="55sp"
+        app:SpinKit_Color="@color/theme3"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
