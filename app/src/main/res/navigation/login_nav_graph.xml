@@ -6,8 +6,17 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.mealmonkey.ui.fragments.loginfragments.OtpFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp">
+        <action
+            android:id="@+id/action_otpFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.mealmonkey.ui.fragments.LoginFragment"
+        android:name="com.example.mealmonkey.ui.fragments.loginfragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -20,11 +29,18 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.mealmonkey.ui.fragments.ForgotPasswordFragment"
+        android:name="com.example.mealmonkey.ui.fragments.loginfragments.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_otpFragment"
+            app:destination="@id/otpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

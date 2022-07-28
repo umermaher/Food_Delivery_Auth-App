@@ -56,9 +56,25 @@ object TextValidations {
         return if (value.isEmpty()) {
             phoneNoText.error = "Fields cannot be empty"
             false
+        }else if(value.length<=5){
+            phoneNoText.error = "Invalid Mobile No."
+            false
         } else {
             phoneNoText.error = null
 //            phoneNoText.setErrorEnabled(false)
+            true
+        }
+    }
+    fun validateAddress(text:EditText):Boolean{
+        val value:String=text.text.toString()
+        return if(value.isEmpty()){
+            text.error="Fields cannot be empty"
+            false
+        }else if(value.length<=10){
+            text.error="I think, your address is not cleared, is it?"
+            false
+        }else{
+            text.error=null
             true
         }
     }

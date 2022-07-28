@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.fragments.OtpFragment">
+    tools:context=".ui.fragments.loginfragments.OtpFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80sp"
+        android:gravity="center"
+        android:text="We have sent an OTP to\nyour mobile"
+        android:textStyle="bold"
+        android:textColor="#4A4B4D"
+        android:textSize="25sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#7C7D7E"
+        android:gravity="center"
+        android:id="@+id/infoText"
+        android:layout_marginTop="10sp"
+        android:text="Please check your mobile number 071*****12\n continue to reset your password"/>
 
-</FrameLayout>
+    <com.chaos.view.PinView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemCount="6"
+        android:layout_gravity="center"
+        app:itemWidth="50dp"
+        app:itemHeight="50dp"
+        android:itemBackground="#F2F2F2"
+        android:layout_marginTop="60dp"
+        android:inputType="number"
+        style="@style/PinWidget.PinView"
+        android:cursorVisible="true"
+        app:cursorColor="@color/theme3"
+        app:lineColor="#F2F2F2"
+        app:hideLineWhenFilled="true"
+        app:itemRadius="10dp"
+        android:id="@+id/pin_view"/>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_btn_bg"
+        android:text="Next"
+        android:layout_marginTop="20sp"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="30sp"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="5sp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/newUserText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Didn't recieve? "
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/resendText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Click Here"
+            android:textColor="@color/theme1"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    </LinearLayout>
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/otpPb"
+        style="@style/SpinKitView.Large.WanderingCubes"
+        android:layout_width="55sp"
+        android:layout_height="55sp"
+        app:SpinKit_Color="@color/theme3"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

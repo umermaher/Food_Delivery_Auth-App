@@ -4,6 +4,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -57,10 +58,17 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
 
+    // Declare the dependency for the Firebase Authentication library
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
+
     //google sign in
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     //facebook sign in
     implementation 'com.facebook.android:facebook-android-sdk:14.1.0'
+
+    //Google Play services dependency for the SMS Retriever API
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
 
     // Navigation Components
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.0"
@@ -83,5 +91,8 @@ dependencies {
     implementation 'com.hbb20:ccp:2.6.0'
     //custom progress bar
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    //otp pin view
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 
 }

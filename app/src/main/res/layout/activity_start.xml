@@ -105,7 +105,7 @@
         android:layout_marginBottom="20sp"
         android:background="@drawable/login_btn_bg"
         android:text="Login"
-        android:onClick="login"
+        android:onClick="loginActivity"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/createAccountBtn"

@@ -20,10 +20,6 @@ class StartActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-
-    fun login(view: View) {
-        startActivity(Intent(this, LoginActivity::class.java))
-    }
     fun createAccount(view: View) {
         startActivity(Intent(this, SignUpActivity::class.java))
     }
@@ -45,5 +41,9 @@ class StartActivity : AppCompatActivity() {
             startActivity(Intent(this,MainActivity::class.java))
             finish()
         }
+    }
+
+    fun loginActivity(view: View) {
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

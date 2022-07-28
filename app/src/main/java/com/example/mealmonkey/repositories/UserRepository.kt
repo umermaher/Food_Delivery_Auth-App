@@ -9,5 +9,7 @@ class UserRepository (val userApi:UserApi,val app:Application){
     suspend fun registerUser(user:User) = userApi.registerUser(
         user.name,user.email,user.photoUrl,user.phoneNo,user.address,user.password
     )
-    suspend fun isUserExist(email:String) = userApi.isUserExist(email)
+    suspend fun loginUser(email:String,password:String) = userApi.loginUser(email,password)
+
+    suspend fun getUserByEmail(tableName:String,email: String) = userApi.getUserByEmail(tableName,email)
 }

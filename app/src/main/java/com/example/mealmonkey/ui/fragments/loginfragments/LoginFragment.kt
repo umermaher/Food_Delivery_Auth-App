@@ -1,6 +1,5 @@
-package com.example.mealmonkey.ui.fragments
+package com.example.mealmonkey.ui.fragments.loginfragments
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,14 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mealmonkey.R
 import com.example.mealmonkey.databinding.FragmentLoginBinding
 import com.example.mealmonkey.ui.activities.MainActivity
 import com.example.mealmonkey.ui.activities.SignUpActivity
+import com.example.mealmonkey.utils.Constants.Companion.INVALID_PASSWORD
+import com.example.mealmonkey.utils.Resource
 import com.example.mealmonkey.utils.TextValidations.validateEmail
 import com.example.mealmonkey.utils.TextValidations.validatePassword
+import com.example.mealmonkey.viewmodels.UserViewModel
 import com.facebook.*
 import com.facebook.CallbackManager.Factory.create
 import com.facebook.login.LoginManager
@@ -26,17 +31,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Response
 import java.util.*
 
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding?=null
     private val binding get() = _binding!!
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var callbackManager:CallbackManager
-
+    private val viewModel: UserViewModel by viewModels()
     companion object {
         private const val RC_GOOGLE_SIGN_IN=99
         const val TAG="LoginFragment"
@@ -75,6 +84,38 @@ class LoginFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun customSignIn() {
+        val test1= validateEmail(binding.emailEditText)
+//        val test2= validatePassword(binding.passwordEditText)
+        when(false){
+            test1 -> return
+//            test2 -> return
+            else -> {}
+        }
+        viewModel.loginUser(binding.emailEditText.text.toString(), binding.passwordEditText.text.toString())
+        viewModel.getUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading -> {
+                    binding.loginPb.visibility=View.VISIBLE
+                    binding.loginBtn.isEnabled=false
+                }
+                is Resource.Success -> {
+                    binding.loginPb.visibility=View.GONE
+                    binding.loginBtn.isEnabled=true
+                    Toast.makeText(requireContext(),"${it.data!!.email}, ${it.data.photoUrl},${it.data.phoneNo}, ${it.data.name}, ${it.data.address} ",Toast.LENGTH_LONG).show()
+                }
+                is Resource.Error -> {
+                    binding.loginPb.visibility=View.GONE
+                    binding.loginBtn.isEnabled=true
+                    if(it.message==INVALID_PASSWORD)
+                        binding.passwordEditText.error= INVALID_PASSWORD
+                    else
+                        Snackbar.make(binding.root,it.message!!,Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun configureFacebookSignIn() {
@@ -132,17 +173,6 @@ class LoginFragment : Fragment() {
             .requestEmail()
             .build()
         mGoogleSignInClient= GoogleSignIn.getClient(requireActivity(),gso)
-    }
-
-    private fun customSignIn() {
-        val test1= validateEmail(binding.emailEditText)
-        val test2= validatePassword(binding.passwordEditText)
-        when(false){
-            test1 -> return
-            test2 -> return
-            else -> {}
-        }
-        Toast.makeText(requireContext(),"hell",Toast.LENGTH_SHORT).show()
     }
 
     private fun googleSignIn() {

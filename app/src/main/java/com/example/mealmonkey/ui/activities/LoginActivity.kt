@@ -10,7 +10,9 @@ import androidx.navigation.findNavController
 import com.example.mealmonkey.R
 import com.example.mealmonkey.databinding.ActivityLoginBinding
 import com.example.mealmonkey.utils.setStatusBarTransparent
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var navController: NavController

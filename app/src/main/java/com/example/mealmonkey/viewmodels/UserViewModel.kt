@@ -1,6 +1,5 @@
 package com.example.mealmonkey.viewmodels
 
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.ConnectivityManager.TYPE_ETHERNET
@@ -17,9 +16,8 @@ import com.example.mealmonkey.MealMonkeyApplication
 import com.example.mealmonkey.models.RegisterUserResponse
 import com.example.mealmonkey.models.User
 import com.example.mealmonkey.repositories.UserRepository
+import com.example.mealmonkey.utils.Constants.Companion.USER_TABLE_NAME
 import com.example.mealmonkey.utils.Resource
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.tasks.Task
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -27,23 +25,48 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserViewModel @Inject constructor(val userRepository: UserRepository):AndroidViewModel(userRepository.app) {
-    val regUserResponse= MutableLiveData<Resource<RegisterUserResponse>>()
-    val userExistResponse=MutableLiveData<Resource<RegisterUserResponse>>()
+    val regUserResponse = MutableLiveData<Resource<RegisterUserResponse>>()
+    val loginUserResponse=MutableLiveData<Resource<RegisterUserResponse>>()
+    val getUserResponse=MutableLiveData<Resource<User>>()
 
-    fun isUserExist(email:String)=viewModelScope.launch{
-        userExistResponse.value=Resource.Loading()
+    fun loginUser(email:String,password:String)=viewModelScope.launch {
+        getUserResponse.value=Resource.Loading()
         if(hasInternetConnection()){
             try{
-                val response=userRepository.isUserExist(email)
-                userExistResponse.value=handleRegisterUser(response)
-            }catch (e: Exception){
-                userExistResponse.value=Resource.Error("Error: ${e.message}")
+                val response=userRepository.loginUser(email,password)
+                getUserResponse.value=handleLoginUser(response,email)
+            }catch (e:Exception){
+                getUserResponse.value=Resource.Error("Failed to login: ${e.message}")
             }
         }else{
-            userExistResponse.value=Resource.Error("No Internet Connection")
+            getUserResponse.value=Resource.Error("No Internet Connection")
         }
     }
 
+    private suspend fun handleLoginUser(response: Response<RegisterUserResponse>, email: String): Resource<User>? {
+        return if(response.isSuccessful){
+            if(response.body()!!.error){
+                Resource.Error(response.body()!!.message)
+            }else{
+                getUserByEmail(email)
+            }
+        }else Resource.Error(response.message())
+    }
+
+    private suspend fun getUserByEmail(email: String): Resource<User>? {
+        return if(hasInternetConnection()){
+            return try{
+                val response=userRepository.getUserByEmail(USER_TABLE_NAME,email)
+                if(response.isSuccessful)
+                    Resource.Success(response.body()!!)
+                else Resource.Error(response.message())
+            }catch (e:Exception){
+                Resource.Error("Something went wrong: ${e.message}")
+            }
+        }else{
+            Resource.Error("No Internet Connection")
+        }
+    }
     fun registerUser(user: User) = viewModelScope.launch {
         regUserResponse.value=Resource.Loading()
         if(hasInternetConnection()){
@@ -59,8 +82,12 @@ class UserViewModel @Inject constructor(val userRepository: UserRepository):Andr
     }
 
     private fun handleRegisterUser(response: Response<RegisterUserResponse>): Resource<RegisterUserResponse>? {
-        return if(response.isSuccessful)
-            Resource.Success(response.body()!!)
+        return if(response.isSuccessful) {
+            if(response.body()!!.error){
+                Resource.Error(response.body()!!.message)
+            }else
+                Resource.Success(response.body()!!)
+        }
         else
             Resource.Error(response.message())
     }
