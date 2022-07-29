@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mealmonkey.databinding.ActivityStartBinding
+import com.example.mealmonkey.utils.PrefsData
 import com.example.mealmonkey.utils.setStatusBarTransparent
 import com.facebook.AccessToken
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -26,21 +27,12 @@ class StartActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val accessToken = AccessToken.getCurrentAccessToken()
-        val isLoggedIn = accessToken != null && !accessToken.isExpired
-        if(isLoggedIn)
-            updateUI(isLoggedInWithFb = isLoggedIn)
-        // Check for existing Google Sign In account, if the user is already signed in
-        // the GoogleSignInAccount will be non-null.
-        val account = GoogleSignIn.getLastSignedInAccount(this)
-        updateUI(account)
+        if(PrefsData(this).isLoggedIn()) updateUI()
     }
 
-    private fun updateUI(account: GoogleSignInAccount? = null,isLoggedInWithFb:Boolean=false) {
-        if(account!=null || isLoggedInWithFb){
-            startActivity(Intent(this,MainActivity::class.java))
-            finish()
-        }
+    private fun updateUI() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     fun loginActivity(view: View) {

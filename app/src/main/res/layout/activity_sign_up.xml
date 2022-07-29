@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40sp"
                 android:text="Sign Up"
+                android:fontFamily="sans-serif"
                 android:textColor="#4A4B4D"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -177,11 +178,12 @@
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/signUpPb"
-        style="@style/SpinKitView.Large.WanderingCubes"
-        android:layout_width="55sp"
-        android:layout_height="55sp"
+        style="@style/SpinKitView.Large.DoubleBounce"
+        android:layout_width="65sp"
+        android:layout_height="65sp"
         app:SpinKit_Color="@color/theme3"
         android:visibility="gone"
+        android:alpha="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

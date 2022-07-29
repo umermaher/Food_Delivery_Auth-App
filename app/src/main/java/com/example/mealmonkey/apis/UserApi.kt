@@ -4,6 +4,8 @@ import com.example.mealmonkey.models.RegisterUserResponse
 import com.example.mealmonkey.models.User
 import com.example.mealmonkey.utils.Constants.Companion.DOES_USER_EXIST
 import com.example.mealmonkey.utils.Constants.Companion.GET_USER_BY_EMAIL
+import com.example.mealmonkey.utils.Constants.Companion.IS_EMAIL_EXIST_WITH_PHONE_NO
+import com.example.mealmonkey.utils.Constants.Companion.LOGIN_WITH_OTHER_ACCOUNT
 import com.example.mealmonkey.utils.Constants.Companion.REG_USER_SITE_URL
 import com.example.mealmonkey.utils.Constants.Companion.USER_LOGIN_URL
 import retrofit2.Response
@@ -37,6 +39,22 @@ interface UserApi {
         @Field("tableName")tableName:String,
         @Field("email")email:String
     ):Response<User>
+
+    @FormUrlEncoded
+    @POST(LOGIN_WITH_OTHER_ACCOUNT)
+    suspend fun loginUserWithOtherAccount(
+        @Field("name")name:String,
+        @Field("email")email:String,
+        @Field("photoUrl")photoUrl:String,
+        @Field("phoneNo")phoneNo:String,
+        @Field("address")address:String,
+    ):Response<User>
+    @FormUrlEncoded
+    @POST(IS_EMAIL_EXIST_WITH_PHONE_NO)
+    suspend fun isEmailExistWithPhoneNo(
+        @Field("email")email:String,
+        @Field("phoneNo")phoneNo:String
+    ):Response<RegisterUserResponse>
 //    @FormUrlEncoded
 //    @POST(DOES_USER_EXIST)
 //    suspend fun isUserExist(

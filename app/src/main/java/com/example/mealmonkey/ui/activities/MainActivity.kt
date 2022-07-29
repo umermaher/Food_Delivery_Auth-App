@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mealmonkey.databinding.ActivityMainBinding
+import com.example.mealmonkey.utils.Constants.Companion.CUSTOM_LOGIN
+import com.example.mealmonkey.utils.Constants.Companion.FACEBOOK_LOGIN
+import com.example.mealmonkey.utils.Constants.Companion.GOOGLE_LOGIN
+import com.example.mealmonkey.utils.PrefsData
 import com.example.mealmonkey.utils.setStatusBarTransparent
 import com.facebook.AccessToken
 import com.facebook.GraphRequest
@@ -19,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 class MainActivity : AppCompatActivity() {
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
@@ -27,8 +32,9 @@ class MainActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
         configureGoogleSignIn()
+        val user=PrefsData(this).getUser()
 
-        binding.userDataText.text=intent.getStringExtra("name")
+        binding.userDataText.text=user.email+" "+user.name+" "+PrefsData(this).isLoggedIn()+" "+PrefsData(this).getLoginType()
 
     }
 
@@ -42,14 +48,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logout(view: View) {
-        mGoogleSignInClient.signOut()
-            .addOnCompleteListener(this, OnCompleteListener<Void?> {
-                startActivity(Intent(this,StartActivity::class.java))
-                finish()
-            })
-        disconnectFromFacebook()
+        when(PrefsData(this).getLoginType()){
+            CUSTOM_LOGIN-> updateUI()
+            FACEBOOK_LOGIN-> disconnectFromFacebook()
+            GOOGLE_LOGIN -> {
+                mGoogleSignInClient.signOut()
+                    .addOnCompleteListener(this, OnCompleteListener<Void?> {
+                        updateUI()
+                    })
+            }
+        }
     }
-    fun disconnectFromFacebook() {
+
+    private fun updateUI() {
+        PrefsData(this).clearUser()
+        startActivity(Intent(this,StartActivity::class.java))
+        finish()
+    }
+
+    private fun disconnectFromFacebook() {
         if (AccessToken.getCurrentAccessToken() == null) {
             return  // already logged out
         }
@@ -60,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             HttpMethod.DELETE,
             GraphRequest.Callback {
                 LoginManager.getInstance().logOut()
-                startActivity(Intent(this,StartActivity::class.java))
+                updateUI()
             }).executeAsync()
     }
 }

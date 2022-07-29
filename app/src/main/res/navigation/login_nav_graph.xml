@@ -13,6 +13,15 @@
         <action
             android:id="@+id/action_otpFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phoneNo"
+            app:argType="string" />
+        <argument
+            android:name="verificationId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -38,9 +47,9 @@
         <action
             android:id="@+id/action_forgotPasswordFragment_to_otpFragment"
             app:destination="@id/otpFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top"
+            app:popEnterAnim="@anim/from_top"
+            app:popExitAnim="@anim/to_bottom" />
     </fragment>
 </navigation>

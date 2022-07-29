@@ -19,7 +19,7 @@ import com.google.firebase.ktx.Firebase
 class OtpFragment : Fragment() {
     private var _binding:FragmentOtpBinding?=null
     private val binding get() = _binding!!
-    private lateinit var user: User
+    private val args:OtpFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +28,8 @@ class OtpFragment : Fragment() {
         _binding=FragmentOtpBinding.inflate(layoutInflater)
 
 //        user=args.user
-        binding.infoText.text="Please check your mobile number ${user.phoneNo}\n continue to reset your password"
+
+        binding.infoText.text="Please check your mobile number ${args.phoneNo}\n continue to reset your password"
         
         binding.nextBtn.setOnClickListener { 
             val code=binding.pinView.text.toString()
@@ -63,4 +64,8 @@ class OtpFragment : Fragment() {
 //                }
 //            }
 //    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        this._binding = null
+    }
 }

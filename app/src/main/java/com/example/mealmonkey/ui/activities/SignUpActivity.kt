@@ -6,13 +6,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.mealmonkey.databinding.ActivitySignUpBinding
 import com.example.mealmonkey.models.User
+import com.example.mealmonkey.utils.*
 import com.example.mealmonkey.utils.Constants.Companion.USER_EXIST_MESSAGE
-import com.example.mealmonkey.utils.PrefsData
-import com.example.mealmonkey.utils.Resource
-import com.example.mealmonkey.utils.TextValidations
-import com.example.mealmonkey.utils.setStatusBarTransparent
 import com.example.mealmonkey.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
@@ -23,6 +21,8 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
@@ -40,7 +40,6 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.SignUpBtn.setOnClickListener {
             signUp()
-//            findNavController().navigate(R.id.action_signUpFragment_to_otpFragment)
         }
     }
 
@@ -80,25 +79,32 @@ class SignUpActivity : AppCompatActivity() {
             when(response){
                 is Resource.Loading -> {
                     binding.signUpPb.visibility = View.VISIBLE
+                    binding.signUpPb.animate().alpha(1f).duration=800
                     binding.SignUpBtn.isEnabled=false
                 }
                 is Resource.Success -> {
-                    binding.signUpPb.visibility = View.GONE
-                    binding.SignUpBtn.isEnabled=true
-                    PrefsData(this).
-                    startActivity(Intent(this@SignUpActivity,MainActivity::class.java))
+                    lifecycleScope.launch {
+                        delay(1000L)
+                        binding.signUpPb.animate().alpha(0f).duration = 800
+                        PrefsData(this@SignUpActivity).saveUser(user)
+                        PrefsData(this@SignUpActivity).saveLoginType(Constants.CUSTOM_LOGIN)
+                        PrefsData(this@SignUpActivity).yesLoggedIn()
+                        startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+                        finish()
+                    }
                 }
                 is Resource.Error -> {
-                    binding.signUpPb.visibility = View.GONE
-                    binding.SignUpBtn.isEnabled=true
-                    if(response.message == USER_EXIST_MESSAGE){
+                    lifecycleScope.launch {
+                        delay(1000L)
+                        binding.signUpPb.animate().alpha(0f).duration = 800
+                        if (response.message == USER_EXIST_MESSAGE) {
                             binding.emailEditText.error = response.message
-                    } else
-                        Snackbar.make(binding.root, "${response.message}", Snackbar.LENGTH_LONG).show()
+                        } else
+                            Snackbar.make(binding.root, "${response.message}", Snackbar.LENGTH_LONG).show()
+                    }
                 }
             }
         }
     }
-
     fun login(view: View) { onBackPressed() }
 }
