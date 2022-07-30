@@ -2,6 +2,7 @@ package com.example.mealmonkey.apis
 
 import com.example.mealmonkey.models.RegisterUserResponse
 import com.example.mealmonkey.models.User
+import com.example.mealmonkey.utils.Constants.Companion.CHANGE_PASSWORD
 import com.example.mealmonkey.utils.Constants.Companion.DOES_USER_EXIST
 import com.example.mealmonkey.utils.Constants.Companion.GET_USER_BY_EMAIL
 import com.example.mealmonkey.utils.Constants.Companion.IS_EMAIL_EXIST_WITH_PHONE_NO
@@ -54,6 +55,13 @@ interface UserApi {
     suspend fun isEmailExistWithPhoneNo(
         @Field("email")email:String,
         @Field("phoneNo")phoneNo:String
+    ):Response<RegisterUserResponse>
+
+    @FormUrlEncoded
+    @POST(CHANGE_PASSWORD)
+    suspend fun changePassword(
+        @Field("email")email:String,
+        @Field("password")password:String
     ):Response<RegisterUserResponse>
 //    @FormUrlEncoded
 //    @POST(DOES_USER_EXIST)

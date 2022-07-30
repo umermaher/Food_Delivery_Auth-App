@@ -1,5 +1,6 @@
 package com.example.mealmonkey.ui.fragments.loginfragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.mealmonkey.R
 import com.example.mealmonkey.databinding.FragmentForgotPasswordBinding
+import com.example.mealmonkey.ui.activities.MainActivity
 import com.example.mealmonkey.utils.NavigationUtils
 import com.example.mealmonkey.utils.Resource
 import com.example.mealmonkey.utils.TextValidations
@@ -19,8 +21,7 @@ import com.example.mealmonkey.utils.TextValidations.validateEmail
 import com.example.mealmonkey.viewmodels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 @AndroidEntryPoint
@@ -42,6 +43,7 @@ class ForgotPasswordFragment : Fragment() {
         return binding.root
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun checkInputs() {
         val test1= validateEmail(binding.emailEditText)
         val test2= TextValidations.validatePhoneNo(binding.phoneEditText)
@@ -56,33 +58,39 @@ class ForgotPasswordFragment : Fragment() {
         viewModel.sendOtpResponse.observe(viewLifecycleOwner){response->
             when(response){
                 is Resource.Loading -> {
-                    binding.forgotPb.visibility = View.VISIBLE
-                    binding.forgotPb.animate().alpha(1f).duration=800
-                    binding.forgotPb.isEnabled=false
+                    requireActivity().runOnUiThread {
+                        binding.forgotPb.visibility = View.VISIBLE
+                        binding.forgotPb.animate().alpha(1f).duration=800
+                        binding.sendBtn.isEnabled=false
+                    }
                 }
                 is Resource.Success->{
-                    lifecycleScope.launch {
+                    GlobalScope.launch {
                         delay(1000L)
-                        binding.forgotPb.animate().alpha(0f).duration = 800
-                        Snackbar.make(binding.root, response.data!!,Snackbar.LENGTH_LONG).show()
-//                        val directions=ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToOtpFragment(phoneNo,email,response.data)
-                        val bundle=Bundle()
-                        bundle.putString("phoneNo",phoneNo)
-                        bundle.putString("verificationId",response.data)
-                        bundle.putString("email",email)
+                        withContext(Dispatchers.Main) {
+                            binding.forgotPb.animate().alpha(0f).duration = 800
+                            binding.sendBtn.isEnabled=true
+                            val bundle=Bundle()
+                            bundle.putString("phoneNo",phoneNo)
+                            bundle.putString("verificationId",response.data)
+                            bundle.putString("email",email)
 
-                        //I was getting error that nav cannot find destination
-                        //I use this navigateSafe
-                        val navController: NavController = Navigation.findNavController(view!!)
-                        NavigationUtils.navigateSafe(navController, R.id.action_forgotPasswordFragment_to_otpFragment, bundle);
-
+                            //I was getting error that nav cannot find destination
+                            //I use this navigateSafe
+                            val navController: NavController = Navigation.findNavController(view!!)
+                            NavigationUtils.navigateSafe(findNavController(), R.id.action_forgotPasswordFragment_to_otpFragment, bundle)
+                        }
                     }
                 }
                 is Resource.Error -> {
-                    lifecycleScope.launch {
+                    GlobalScope.launch {
                         delay(1000L)
-                        binding.forgotPb.animate().alpha(0f).duration = 800
-                        Snackbar.make(binding.root, response.message!!,Snackbar.LENGTH_LONG).show()
+                        withContext(Dispatchers.Main) {
+                            binding.forgotPb.animate().alpha(0f).duration = 800
+                            Snackbar.make(binding.root, response.message!!, Snackbar.LENGTH_LONG)
+                                .show()
+                            binding.sendBtn.isEnabled = true
+                        }
                     }
                 }
             }

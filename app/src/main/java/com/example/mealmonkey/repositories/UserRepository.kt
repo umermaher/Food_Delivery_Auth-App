@@ -16,4 +16,5 @@ class UserRepository (val userApi:UserApi,val app:Application){
         user.name,user.email,user.photoUrl,user.phoneNo,user.address
     )
     suspend fun isEmailExistWithPhoneNo(email:String,phoneNo:String)= userApi.isEmailExistWithPhoneNo(email,phoneNo)
+    suspend fun changePassword(email: String,password: String) = userApi.changePassword(email,password)
 }

@@ -9,6 +9,7 @@ class Constants {
         const val USER_LOGIN_URL="loginUser.php"
         const val GET_USER_BY_EMAIL="getUserByEmail.php"
         const val IS_EMAIL_EXIST_WITH_PHONE_NO="isEmailExistWithPhoneNo.php"
+        const val CHANGE_PASSWORD="changePassword.php"
 
         //google, facebook
         const val LOGIN_WITH_OTHER_ACCOUNT="loginUserWithOtherAccount.php"

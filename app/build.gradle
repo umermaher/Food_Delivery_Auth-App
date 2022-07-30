@@ -57,6 +57,8 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.6.0-alpha01'
+
 
     // Declare the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
@@ -95,4 +97,8 @@ dependencies {
     //otp pin view
     implementation 'io.github.chaosleung:pinview:1.4.4'
 
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }

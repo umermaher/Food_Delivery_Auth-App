@@ -86,7 +86,7 @@
     </LinearLayout>
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/otpPb"
-        style="@style/SpinKitView.Large.WanderingCubes"
+        style="@style/SpinKitView.Large.DoubleBounce"
         android:layout_width="65sp"
         android:layout_height="65sp"
         app:SpinKit_Color="@color/theme3"

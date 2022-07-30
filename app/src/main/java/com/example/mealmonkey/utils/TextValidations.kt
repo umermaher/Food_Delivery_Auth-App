@@ -41,6 +41,9 @@ object TextValidations {
         return if (value.isEmpty()) {
             fullNameText.error = "Fields cannot be empty"
             false
+        }else if(value.length<6){
+            fullNameText.error = "Name is too short!"
+            false
         }else if(value.matches(".*\\d.*".toRegex())){
             fullNameText.error="Remove numbers!"
             false
