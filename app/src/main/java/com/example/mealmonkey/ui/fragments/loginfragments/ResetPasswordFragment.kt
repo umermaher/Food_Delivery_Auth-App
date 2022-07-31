@@ -76,7 +76,6 @@ class ResetPasswordFragment : Fragment() {
                             binding.nextBtn.isEnabled=true
                             Toast.makeText(requireContext(), response.data!!.message,Toast.LENGTH_SHORT).show()
                             NavigationUtils.navigateSafe(findNavController(), R.id.action_resetPasswordFragment_to_loginFragment, null)
-
                         }
                     }
                 }

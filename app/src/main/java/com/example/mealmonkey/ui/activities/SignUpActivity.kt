@@ -97,6 +97,7 @@ class SignUpActivity : AppCompatActivity() {
                     lifecycleScope.launch {
                         delay(1000L)
                         binding.signUpPb.animate().alpha(0f).duration = 800
+                        binding.SignUpBtn.isEnabled=true
                         if (response.message == USER_EXIST_MESSAGE) {
                             binding.emailEditText.error = response.message
                         } else

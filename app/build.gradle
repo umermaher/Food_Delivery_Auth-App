@@ -89,6 +89,9 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.3"
     implementation "com.squareup.okhttp3:logging-interceptor:4.5.0"
 
+    //SplashScreen API
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
     //country code picker
     implementation 'com.hbb20:ccp:2.6.0'
     //custom progress bar

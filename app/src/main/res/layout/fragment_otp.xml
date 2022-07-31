@@ -74,10 +74,10 @@
             android:textSize="15sp"/>
 
         <TextView
-            android:id="@+id/resendText"
+            android:id="@+id/resendCodeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:paddingVertical="3sp"
             android:text="Click Here"
             android:textColor="@color/theme1"
             android:textSize="16sp"

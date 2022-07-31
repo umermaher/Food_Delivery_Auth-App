@@ -77,7 +77,7 @@ class ForgotPasswordFragment : Fragment() {
 
                             //I was getting error that nav cannot find destination
                             //I use this navigateSafe
-                            val navController: NavController = Navigation.findNavController(view!!)
+//                            val navController: NavController = Navigation.findNavController(view!!)
                             NavigationUtils.navigateSafe(findNavController(), R.id.action_forgotPasswordFragment_to_otpFragment, bundle)
                         }
                     }

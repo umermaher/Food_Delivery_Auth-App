@@ -4,12 +4,15 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.mealmonkey.R
 import com.example.mealmonkey.databinding.ActivityLoginBinding
 import com.example.mealmonkey.utils.setStatusBarTransparent
+import com.example.mealmonkey.viewmodels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding=ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

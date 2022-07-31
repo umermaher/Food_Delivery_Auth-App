@@ -148,6 +148,7 @@ class UserViewModel @Inject constructor(val userRepository: UserRepository):Andr
     }
 
     fun changePassword(email: String,password: String)=viewModelScope.launch {
+        changePasswordResponse.value=Resource.Loading()
         if(hasInternetConnection()){
             try{
                 val response=userRepository.changePassword(email,password)
