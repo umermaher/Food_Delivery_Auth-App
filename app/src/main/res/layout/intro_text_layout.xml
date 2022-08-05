@@ -24,7 +24,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20sp"
             android:gravity="center"
-            android:paddingHorizontal="40sp"
+            android:paddingHorizontal="50sp"
             android:textColor="#7C7D7E"
             tools:text="Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep" />
 

@@ -13,7 +13,7 @@
         android:layout_height="0sp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="30sp"
         app:layout_constraintBottom_toTopOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56sp"
-            android:layout_marginTop="40sp"
+            android:layout_marginTop="30sp"
             android:background="@drawable/edit_text_bg"
             android:gravity="center_vertical"
             android:orientation="vertical"
@@ -206,7 +206,7 @@
         android:text="Save"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:layout_marginBottom="115sp"
+        android:layout_marginBottom="110sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

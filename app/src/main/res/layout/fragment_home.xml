@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -37,7 +37,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/white_btn_bg"
-                android:padding="3sp"
+                android:padding="5sp"
                 android:src="@drawable/ic_shopping_cart"
                 app:tint="#4A4B4D" />
         </RelativeLayout>
@@ -47,18 +47,15 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="wrap_content"
             android:layout_height="70sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="10sp"
             app:boxBackgroundColor="@color/white"
             android:hint="Delivering to"
             app:hintTextColor="#7C7D7E"
-            app:boxStrokeColor="@color/teal_200"
             app:endIconTint="@color/theme1"
             app:boxStrokeWidth="0sp"
             android:layout_marginStart="-15sp"
             app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-            app:startIconDrawable="@drawable/ic_location"
-            app:startIconTint="@color/theme1">
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView"

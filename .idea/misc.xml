@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/Meal-Monkey-App/app/src/main/res/layout/activity_main.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/Meal-Monkey-App/app/src/main/res/layout/fragment_home.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/Meal-Monkey-App/app/src/main/res/layout/fragment_profile.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/Meal-Monkey-App/app/src/main/res/layout/intro_text_layout.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/Meal-Monkey-App/app/src/main/res/menu/bottom_bar_menu.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/create_account_bg.xml" value="0.15" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/edit_text_bg.xml" value="0.15" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/fb_btn_bg.xml" value="0.15" />

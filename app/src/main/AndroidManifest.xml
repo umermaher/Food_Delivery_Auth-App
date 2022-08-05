@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".IntroScreen"
+            android:name=".ui.activities.IntroScreen"
             android:exported="false" />
         <activity
             android:name=".ui.activities.StartActivity"
@@ -37,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activities.IntroScreen"
             android:exported="false" />
         <activity
             android:name=".ui.activities.MainActivity"

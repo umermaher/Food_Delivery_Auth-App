@@ -3,36 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
-
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.mealmonkey.ui.fragments.mainfragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@id/menuFragment">
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.mealmonkey.ui.fragments.mainfragments.MenuFragment"
         android:label="fragment_menu"
-        tools:layout="@layout/fragment_menu" >
-    </fragment>
+        tools:layout="@layout/fragment_menu" />
     <fragment
         android:id="@+id/offersFragment"
         android:name="com.example.mealmonkey.ui.fragments.mainfragments.OffersFragment"
         android:label="fragment_offers"
-        tools:layout="@layout/fragment_offers" >
-
-    </fragment>
+        tools:layout="@layout/fragment_offers" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.mealmonkey.ui.fragments.mainfragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-    </fragment>
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.example.mealmonkey.ui.fragments.mainfragments.MoreFragment"
         android:label="fragment_more"
-        tools:layout="@layout/fragment_more" >
-    </fragment>
+        tools:layout="@layout/fragment_more" />
 </navigation>

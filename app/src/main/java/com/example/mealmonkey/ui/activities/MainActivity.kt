@@ -1,14 +1,14 @@
 package com.example.mealmonkey.ui.activities
 
-import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.mealmonkey.R
 import com.example.mealmonkey.databinding.ActivityMainBinding
@@ -29,11 +29,15 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.background=null
         binding.bottomNavView.menu[2].isEnabled=false
 
-        binding.bottomNavView.setupWithNavController(findNavController(R.id.fragmentContainerView2))
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment?
+        val navController = navHostFragment!!.navController
 
-//        binding.homeFab.setOnClickListener {
-//            loadHomeFragment(HomeFragment())
-//        }
+        binding.bottomNavView.setupWithNavController(navController)
+
+        binding.homeFab.setOnClickListener {
+            loadHomeFragment(HomeFragment())
+        }
 
     }
 
