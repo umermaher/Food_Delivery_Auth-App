@@ -26,6 +26,9 @@ class StartActivity : AppCompatActivity() {
                 splashViewModel.isLoading.value
             }
         }
+        if(PrefsData(this).isFirstTime())
+            startActivity(Intent(this,IntroScreen::class.java))
+
         binding=ActivityStartBinding.inflate(layoutInflater)
         setStatusBarTransparent(this,binding.root)
         setContentView(binding.root)

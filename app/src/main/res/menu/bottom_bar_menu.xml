@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuFragment"
+        android:title="Menu" android:icon="@drawable/ic_menu"/>
+    <item android:id="@+id/offersFragment"
+        android:title="Offers" android:icon="@drawable/ic_bag"/>
+    <item android:id="@+id/placeHolder"
+        android:title="" />
+    <item android:id="@+id/profileFragment"
+        android:title="Profile" android:icon="@drawable/ic_person"/>
+    <item android:id="@+id/moreFragment"
+        android:title="More" android:icon="@drawable/ic_more"/>
+</menu>

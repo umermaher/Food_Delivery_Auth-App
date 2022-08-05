@@ -14,6 +14,7 @@ class PrefsData(val context: Context) {
         const val USER_ADDRESS="address"
         const val IS_CUSTOM_LOGGED_IN="isCustomLoggedIn"
         const val LOGIN_TYPE="loginType"
+        const val IS_FIRST_TIME="isFirstTime"
     }
     fun saveUser(user: User){
         val sp=context.getSharedPreferences(USER_DATA,Context.MODE_PRIVATE)
@@ -41,12 +42,22 @@ class PrefsData(val context: Context) {
     fun isLoggedIn(): Boolean=context.getSharedPreferences(USER_DATA,Context.MODE_PRIVATE).getBoolean(
         IS_CUSTOM_LOGGED_IN,false)
 
-    fun clearUser()= context.getSharedPreferences(USER_DATA,Context.MODE_PRIVATE)
-        .edit()
-        .clear()
+    fun clearUser(){
+        val sp=context.getSharedPreferences(USER_DATA,Context.MODE_PRIVATE)
+        val editor=sp.edit()
+        editor.clear()
         .apply()
+        yesFirstTime()
+    }
+
     fun saveLoginType(value:Int) = context.getSharedPreferences(USER_DATA,Context.MODE_PRIVATE)
         .edit().putInt(LOGIN_TYPE,value).apply()
     fun getLoginType():Int = context.getSharedPreferences(USER_DATA,Context.MODE_PRIVATE).getInt(
         LOGIN_TYPE,10)
+
+    fun yesFirstTime() {
+        context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE)
+            .edit().putBoolean(IS_FIRST_TIME, false).apply()
+    }
+    fun isFirstTime() = context.getSharedPreferences(USER_DATA, Context.MODE_PRIVATE).getBoolean(IS_FIRST_TIME,true)
 }

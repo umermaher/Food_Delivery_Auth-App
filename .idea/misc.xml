@@ -8,18 +8,31 @@
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/fb_btn_bg.xml" value="0.15" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/google_btn_bg.xml" value="0.15" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/ic_monkey.xml" value="0.1" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/ic_more.xml" value="0.1615" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/ic_search.xml" value="0.1615" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/ic_splash.xml" value="0.139" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/login_btn_bg.xml" value="0.15" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/drawable/white_btn_bg.xml" value="0.1615" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/font/poppins.xml" value="0.2453125" />
-        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_main.xml" value="0.15" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_intro_screen.xml" value="0.15" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_login.xml" value="0.14" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_main.xml" value="0.13507109004739337" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/activity_start.xml" value="0.20018115942028986" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_login.xml" value="0.18" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_menu.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_more.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_offers.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_otp.xml" value="0.18" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_profile.xml" value="0.11" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_reset_password.xml" value="0.15" />
         <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/fragment_sign_up.xml" value="0.15" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/intro_image_layout.xml" value="0.2" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/intro_page_layout.xml" value="0.15" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/layout/intro_text_layout.xml" value="0.21510416666666668" />
+        <entry key="..\:/Users/umerm/AndroidStudioProjects/MealMonkey/app/src/main/res/menu/bottom_bar_menu.xml" value="0.2140625" />
       </map>
     </option>
   </component>

@@ -7,4 +7,7 @@
     <string name="fb_login_protocol_scheme">fb4819503781482666</string>
     <string name="facebook_client_token">203a189ebb8f1a9c29b8fbe052d6dce2</string>
     <string name="your_web_client_id">100223079268-qded13oo0f2lp5m7bqu37ir7u5g4ah2v.apps.googleusercontent.com</string>
+    <string name="introFirstText">Discover the best foods from over 1,000 restaurants and fast delivery to your doorstep</string>
+    <string name="introSecondText">Fast food delivery to your home, office wherever you are</string>
+    <string name="introThirdText">Real time tracking of your food on the app once you placed the order</string>
 </resources>
