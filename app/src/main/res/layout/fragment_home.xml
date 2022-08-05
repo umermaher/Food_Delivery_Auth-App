@@ -20,16 +20,16 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/wishText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:textColor="#4A4B4D"
                 android:textSize="24sp"
-                android:id="@+id/wishText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Good Morning Umer!" />
+                tools:text="Good Morning Bro!" />
 
             <ImageView
                 android:layout_width="33sp"
