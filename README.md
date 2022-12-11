@@ -1,6 +1,7 @@
 # Made with ❤️
 # Code
 * MVVM
+* Dagger Hilt(Dependency Injection)
 * Cool and intuitive UI
 * Login
 * Sign up
