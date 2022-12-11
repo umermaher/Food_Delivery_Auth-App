@@ -4,6 +4,7 @@
 * Cool and intuitive UI
 * Login
 * Sign up
+* Social Login (Google, Facebook)
 * Forgot password
 * Reset Password
 * Phone number verification
